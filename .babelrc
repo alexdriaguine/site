@@ -1,0 +1,27 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "> 1%",
+            "not ie > 0"
+          ]
+        }
+      }
+    ],
+    "@babel/typescript",
+    "@babel/react"
+  ],
+  "plugins": [
+    "@babel/proposal-object-rest-spread",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ]
+}
