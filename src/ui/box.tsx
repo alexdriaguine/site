@@ -39,9 +39,9 @@ export const Flex = Box.extend`
 `
 
 export const Row = Flex.extend`
-  flex-direction: 'row';
+  flex-direction: row;
 `
 
 export const Column = Flex.extend`
-  flex-direction: 'column';
+  flex-direction: column;
 `

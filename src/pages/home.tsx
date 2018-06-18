@@ -1,6 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import {Column, Row} from 'src/ui/box'
+import {Column, Row} from '../ui/box'
+import {Title} from '../ui/typography'
+import {Avatar} from '../ui/style'
 
 const HomeWrapper = Column.extend`
   align-items: center;

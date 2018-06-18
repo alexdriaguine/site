@@ -45,18 +45,19 @@ injectGlobal`
 `
 
 const AppShell = styled.div`
-  background: salmon;
   display: flex;
   flex-direction: column;
 `
 
-const Header = styled.header``
+const Header = styled.header`
+  height: 60px;
+  background: grey;
+`
 
 export class App extends React.Component {
   render() {
     return (
       <AppShell>
-        <Header>Hello</Header>
         <Main>
           <Switch>
             <Route path="/" exact component={Home} />

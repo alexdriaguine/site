@@ -51,7 +51,6 @@ module.exports = env => {
     entry: entry(env),
     resolve: {
       modules: ['node_modules'],
-      alias: path.resolve(__dirname, '..', 'src'),
       extensions: ['.ts', '.tsx', '.js', '.json'],
     },
   }
