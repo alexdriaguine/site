@@ -11,7 +11,7 @@ const config = {
 async function build() {
   rimraf.sync('dist')
 
-  const createConfig = require('../config/webpack.client.js')
+  const createConfig = require('../config/webpack.config.js')
   const jsConfig = createConfig({...config, static: false})
   const staticConfig = createConfig({...config, static: true})
 
@@ -19,7 +19,10 @@ async function build() {
   const staticCompiler = webpack(staticConfig)
 
   await compile(jsCompiler).catch(err => console.log('JS compiler: ', err))
-  await compile(staticCompiler).catch(err => console.log('Static compiler', err))
+  await compile(staticCompiler).catch(err =>
+    console.log('Static compiler', err),
+  )
+  rimraf.sync('dist/static.js')
 }
 
 /**

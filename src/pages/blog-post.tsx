@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {MatchedRoute} from 'react-router-config'
 import Markdown from 'markdown-to-jsx'
-import {Posts} from '../../posts/posts';
+import {Posts} from '../posts/posts';
+
 interface OwnProps {
   match: {
     params: {

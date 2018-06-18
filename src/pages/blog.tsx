@@ -1,7 +1,6 @@
 import * as React from 'react'
-import {renderRoutes} from 'react-router-config'
 import {Link} from 'react-router-dom'
-import {BlogPost} from './blog-post/index'
+import {BlogPost} from './blog-post'
 import {Route} from 'react-router'
 import {Posts} from '../posts/posts'
 

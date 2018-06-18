@@ -17,7 +17,7 @@ const config = {
 async function start() {
   rimraf.sync('dist')
 
-  const clientConfig = require('../config/webpack.client.js')(config)
+  const clientConfig = require('../config/webpack.config.js')(config)
 
   const compiler = webpack(clientConfig)
   devServer.use(history())

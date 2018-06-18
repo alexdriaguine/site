@@ -17,23 +17,6 @@ export const Title = styled.h1`
   margin-bottom: 1rem;
 `
 
-export const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-`
 
-export const Main = styled.div`
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  max-width: 1280px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-`
 
-export default {
-  Avatar,
-  Title,
-  Row,
-  Main,
-}
+

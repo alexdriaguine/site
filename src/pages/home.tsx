@@ -1,14 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import * as S from '../components/style'
+import {Column, Row} from 'src/ui/box'
 
-const HomeWrapper = styled(S.Row)`
-  display: flex;
-  flex-direction: column;
+const HomeWrapper = Column.extend`
   align-items: center;
 `
 
-const SocialLinksWrapper = styled(S.Row)`
+const SocialLinksWrapper = styled(Row)`
   a {
     margin: 12px 6px;
   }
@@ -43,11 +41,11 @@ export class Home extends React.Component {
   render() {
     return (
       <HomeWrapper>
-        <S.Title>Alex Driaguine</S.Title>
-        <S.Avatar />
+        <Title>Alex Driaguine</Title>
+        <Avatar />
         <p style={{marginTop: 12, textAlign: 'center', maxWidth: 360}}>
-          Hi! Im Alex. I'm a web programmer, born in the Ural Mountains, now living
-          in the forests of Sweden. I like javascript, beer and coffee.
+          Hi! Im Alex. I'm a web programmer, born in the Ural Mountains, now
+          living in the forests of Sweden. I like javascript, beer and coffee.
         </p>
         <SocialLinks />
       </HomeWrapper>
