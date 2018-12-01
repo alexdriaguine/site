@@ -42,4 +42,15 @@ const template = (styles: string, markup: string, chunks: Array<string>) => `
   ${chunks.map(chunk => `<script src="${chunk}"></script>`).join('\n  ')}
 </body>
 
+<script>
+// Check that service workers are registered
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
+</script>
+
+
 </html>`

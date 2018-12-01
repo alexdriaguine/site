@@ -7,12 +7,14 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const fs = require('fs')
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 // Paths
 const baseEntry = path.resolve(__dirname, '..', 'src', 'main.tsx')
 const hotEntry = `webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr`
 const staticEntry = path.resolve(__dirname, '..', 'src', 'static.tsx')
 const output = path.resolve(__dirname, '..', 'dist')
+
 const entry = env => {
   if (env.production) {
     return env.static ? staticEntry : baseEntry
@@ -151,6 +153,7 @@ module.exports = env => {
       )
     } else {
       config.plugins.push(new ManifestPlugin())
+      config.plugins.push(new WorkboxPlugin.GenerateSW())
     }
   } else {
     config.plugins.push(...devPlugins)
