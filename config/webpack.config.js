@@ -25,12 +25,14 @@ const entry = env => {
  * Todo: move all this functionality to somewhere else
  *
  */
-const postsPath = path.resolve(__dirname, '../src/posts')
-const files = fs.readdirSync(postsPath)
-const posts = files
-  .filter(file => file.includes('.md'))
-  .map(file => file.replace('.md', '').split('_'))
-  .map(([date, file]) => `/blog/${file}`)
+// const postsPath = path.resolve(__dirname, '../src/posts')
+// const stats = fs.statSync(postsPath)
+
+// const files = fs.readdirSync(postsPath)
+// const posts = files
+//   .filter(file => file.includes('.md'))
+//   .map(file => file.replace('.md', '').split('_'))
+//   .map(([date, file]) => `/blog/${file}`)
 
 /**
  * Plugins.
@@ -55,11 +57,18 @@ module.exports = env => {
     },
   }
 
+  const filename = env.production
+    ? '[name].bundle.[hash].js'
+    : '[name].bundle.js'
+  const chunkFilename = env.production
+    ? '[name].chunk.[hash].js'
+    : '[name].chunk.js'
+
   // Output config
   config.output = {
     path: output,
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js',
+    filename: filename,
+    chunkFilename: chunkFilename,
     publicPath: '/',
   }
 
