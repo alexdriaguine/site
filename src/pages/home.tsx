@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import {Title} from '../ui/typography'
 import {Avatar} from '../ui/style'
 import {Box, Image, Card, Heading, Text, Link, Flex} from 'rebass'
@@ -106,6 +106,22 @@ const Cursor = styled.span`
   margin-top: -3px;
 `
 
+const AscpectRatioBox = styled(Box)`
+  height: 0;
+  overflow: hidden;
+  padding-top: 100%; /* Just hardcoded for now, since image is a square */
+  background: white;
+  position: relative;
+`
+
+const AspectRatioImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+
 export class Home extends React.Component {
   render() {
     return (
@@ -114,14 +130,24 @@ export class Home extends React.Component {
           width={[360, 400]}
           p={2}
           m="0 auto"
-          mt={[-100, -100, -240]}
+          mt={[-120, -120, -240]}
           borderRadius={2}
           bg="white"
           boxShadow="medium"
         >
-          <Image src={avatar} mb={2} />
-          <Box px={2}>
-            <Heading style={{display: 'flex'}} p={2} bg="black" color="white" fontFamily="mono" as="h1" mb={2}>
+          <AscpectRatioBox mb={2} >
+            <AspectRatioImage src={avatar} />
+          </AscpectRatioBox>
+          <Box>
+            <Heading
+              style={{display: 'flex'}}
+              p={2}
+              bg="black"
+              color="white"
+              fontFamily="mono"
+              as="h1"
+              mb={2}
+            >
               $ whoami <Cursor>|</Cursor>
             </Heading>
             <Text fontFamily="sans" mb={4}>
