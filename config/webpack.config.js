@@ -146,7 +146,7 @@ module.exports = env => {
     if (env.static) {
       config.plugins.push(
         new StaticSiteGeneratorPlugin({
-          paths: ['/', '/blog/', ...posts],
+          paths: ['/'],
         }),
       )
     } else {
