@@ -1,9 +1,17 @@
-import '@babel/polyfill'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as ReactDOMServer from 'react-dom/server'
 import {BrowserRouter, StaticRouter} from 'react-router-dom'
 import {App} from './app'
+
+declare global {
+  interface Hot {
+    accept: () => void
+  }
+  interface NodeModule {
+    hot: Hot
+  }
+}
 
 if (process.env.NODE_ENV === 'production') {
   ReactDOM.hydrate(
@@ -21,6 +29,6 @@ if (process.env.NODE_ENV === 'production') {
   )
 }
 
-if ((module as any).hot) {
-  ;(module as any).hot.accept()
+if (module.hot) {
+  module.hot.accept()
 }
