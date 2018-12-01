@@ -6,7 +6,8 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "dev": "node scripts/dev.js",
-    "build": "node scripts/generate-blog-posts.js && node scripts/build.js"
+    "build": "node scripts/build.js",
+    "serve": "npx serve dist"
   },
   "author": "",
   "license": "ISC",
@@ -20,11 +21,13 @@
     "@mdx-js/mdx": "^0.9.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/node": "^10.1.4",
-    "@types/react": "^16.3.14",
-    "@types/react-dom": "^16.0.5",
+    "@types/react": "16.7",
+    "@types/react-dom": "^16.0.11",
     "@types/react-router": "^4.0.26",
     "@types/react-router-dom": "^4.2.7",
     "@types/rimraf": "^2.0.2",
+    "@types/styled-components": "^4.0.1",
+    "@types/styled-system": "^3.0.4",
     "@types/webpack": "^4.4.0",
     "@types/webpack-dev-middleware": "^2.0.1",
     "@types/webpack-hot-middleware": "^2.16.3",
@@ -57,10 +60,11 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.49",
     "isomorphic-fetch": "^2.2.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "styled-components": "^3.3.2"
+    "rebass": "^3.0.0-11",
+    "styled-components": "^4.0.0"
   }
 }
