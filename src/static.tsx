@@ -4,13 +4,12 @@ import {StaticRouter} from 'react-router-dom'
 import {App} from './app'
 import {ServerStyleSheet} from 'styled-components'
 
-const startup = 'manifest.js'
 const vendor = 'vendor.js'
 const main = 'main.js'
 
 export default (locals: any, callback: any) => {
   const manifest = require('../dist/manifest.json')
-  const chunks = [manifest[startup], manifest[vendor], manifest[main]]
+  const chunks = [manifest[vendor], manifest[main]]
 
   const sheet = new ServerStyleSheet()
   const context = {}

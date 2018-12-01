@@ -7,6 +7,7 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const fs = require('fs')
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const {InjectManifest} = require('workbox-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
 // Paths
@@ -23,28 +24,6 @@ const entry = env => {
 }
 
 /**
- * Reads all blog posts in the /posts folder.
- * Todo: move all this functionality to somewhere else
- *
- */
-// const postsPath = path.resolve(__dirname, '../src/posts')
-// const stats = fs.statSync(postsPath)
-
-// const files = fs.readdirSync(postsPath)
-// const posts = files
-//   .filter(file => file.includes('.md'))
-//   .map(file => file.replace('.md', '').split('_'))
-//   .map(([date, file]) => `/blog/${file}`)
-
-/**
- * Plugins.
- * TODO: // Move plugins to own fie/folder?
- */
-
-/**
- * TODO: break up this into dev/prod configs? Maybe a config
- * factory for static/bundle?
- *
  * @param {{env: string, production: boolean}} env
  */
 module.exports = env => {
@@ -153,7 +132,12 @@ module.exports = env => {
       )
     } else {
       config.plugins.push(new ManifestPlugin())
-      config.plugins.push(new WorkboxPlugin.GenerateSW())
+      config.plugins.push(
+        new InjectManifest({
+          swSrc: './src/service-worker.js',
+          include: [/\.html$/, /\.js$/],
+        }),
+      )
     }
   } else {
     config.plugins.push(...devPlugins)
@@ -180,7 +164,6 @@ module.exports = env => {
           },
         },
       },
-      runtimeChunk: {name: 'manifest'},
     }
   }
 
