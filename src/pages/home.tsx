@@ -122,12 +122,18 @@ const AspectRatioImage = styled(Image)`
   height: 100%;
 `
 
+const InfoCard = styled(Card)`
+  max-width: 360px;
+  @media screen and (min-width: 40em) {
+    max-width: 400px;
+  }
+`
+
 export class Home extends React.Component {
   render() {
     return (
       <Main>
-        <Card
-          width={[360, 400]}
+        <InfoCard
           p={2}
           m="0 auto"
           mt={[-120, -120, -240]}
@@ -135,7 +141,7 @@ export class Home extends React.Component {
           bg="white"
           boxShadow="medium"
         >
-          <AscpectRatioBox mb={2} >
+          <AscpectRatioBox mb={2}>
             <AspectRatioImage src={avatar} />
           </AscpectRatioBox>
           <Box>
@@ -157,7 +163,7 @@ export class Home extends React.Component {
             </Text>
             <SocialLinks />
           </Box>
-        </Card>
+        </InfoCard>
       </Main>
     )
   }
