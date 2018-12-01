@@ -142,7 +142,7 @@ export class Home extends React.Component {
           boxShadow="medium"
         >
           <AscpectRatioBox mb={2}>
-            <AspectRatioImage src={avatar} />
+            <AspectRatioImage alt="Image of me" src={avatar} />
           </AscpectRatioBox>
           <Box>
             <Heading

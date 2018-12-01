@@ -35,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 `
 const theme = {
   colors: {
@@ -46,7 +45,6 @@ const theme = {
   fonts: {
     sans: 'system-ui, sans-serif',
     mono: 'Menlo, monospace',
-    pressStart: "'Press Start 2P', cursive;",
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',
@@ -113,7 +111,7 @@ export const App = () => (
           <HeaderCard backgroundSize="cover" color="white" bg="#546e7a">
             <Heading
               mt={[20, 20, 80]}
-              fontFamily="pressStart"
+              fontFamily="sans"
               textAlign="center"
               fontSize={[4, 5,  6]}
             >
