@@ -8,7 +8,7 @@ const vendor = 'vendor.js'
 const main = 'main.js'
 
 export default (locals: any, callback: any) => {
-  const manifest = require('../dist/manifest.json')
+  const manifest = require('../dist/chunks.json')
   const chunks = [manifest[vendor], manifest[main]]
 
   const sheet = new ServerStyleSheet()
@@ -26,11 +26,12 @@ export default (locals: any, callback: any) => {
 
 const template = (styles: string, markup: string, chunks: Array<string>) => `
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
 
   <title>alexdriaguine</title>
   ${styles}

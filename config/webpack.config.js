@@ -131,7 +131,7 @@ module.exports = env => {
         }),
       )
     } else {
-      config.plugins.push(new ManifestPlugin())
+      config.plugins.push(new ManifestPlugin({fileName: 'chunks.json'}))
       config.plugins.push(
         new InjectManifest({
           swSrc: './src/service-worker.js',
