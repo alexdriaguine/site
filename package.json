@@ -6,7 +6,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "dev": "node scripts/dev.js",
-    "build": "node scripts/build.js && yarn copy-manifest",
+    "build": "node scripts/build.js && npm run copy-manifest",
     "copy-manifest": "cp manifest.json dist/manifest.json",
     "serve": "npx serve dist"
   },
