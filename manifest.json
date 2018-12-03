@@ -1,0 +1,10 @@
+{
+  "name": "Alex Driaguine personal site",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "https://alexdriaguine.netlify.com",
+  "short_name": "AD Site",
+  "description": "Personal site",
+  "background_color": "#ffffff",
+  "icons": []
+}
