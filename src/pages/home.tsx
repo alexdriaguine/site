@@ -1,9 +1,10 @@
 import * as React from 'react'
-import styled, {keyframes} from 'styled-components'
+import styled, {keyframes, css} from 'styled-components'
 import {Title} from '../ui/typography'
 import {Avatar} from '../ui/style'
 import {Box, Image, Card, Heading, Text, Link, Flex} from 'rebass'
 import avatar from '../assets/avatar.jpg'
+import {useState, useEffect} from 'react'
 
 const IconSvg = styled.svg`
   width: 32px;
@@ -89,13 +90,26 @@ const blink = keyframes`
     color: white;
   }
 `
-
+interface CursorProps {
+  blinking?: boolean
+}
 const Cursor = styled.span`
   width: 2px;
   color: white;
   height: 100%;
-  animation: ${blink} 1s step-end infinite;
+
+  ${(props: CursorProps) => {
+    if (props.blinking) {
+      console.log(blink)
+      return css`
+        animation: ${blink} 1s step-end infinite;
+      `
+    }
+    return ''
+  }}
+
   margin-top: -3px;
+  margin-left: -3px;
 `
 
 const AscpectRatioBox = styled(Box)`
@@ -119,41 +133,49 @@ const InfoCard = styled(Card)`
   }
 `
 
-export class Home extends React.Component {
-  render() {
-    return (
-      <Main>
-        <InfoCard
-          p={2}
-          m="0 auto"
-          mt={[-120, -120, -240]}
-          borderRadius={2}
-          bg="white"
-          boxShadow="medium"
-        >
-          <AscpectRatioBox mb={2}>
-            <AspectRatioImage alt="Image of me" src={avatar} />
-          </AscpectRatioBox>
-          <Box>
-            <Heading
-              style={{display: 'flex'}}
-              p={2}
-              bg="black"
-              color="white"
-              fontFamily="mono"
-              mb={2}
-            >
-              $ whoami <Cursor>|</Cursor>
-            </Heading>
-            <Text fontFamily="sans" mb={4}>
-              Hi! Im Alex. I'm a web programmer, born in the Ural Mountains, now
-              living in the forests of Sweden. I like javascript, beer and
-              coffee.
-            </Text>
-            <SocialLinks />
-          </Box>
-        </InfoCard>
-      </Main>
-    )
-  }
+export const Home = () => {
+  const command = 'whoami'
+  const [whoami, setWhoami] = useState<string>(command)
+  const finishedTyping = whoami.length === command.length
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     setWhoami(whoami + command[whoami.length])
+  //   }, Math.floor(Math.random() * (100 - 30)) + 30)
+  //   if (whoami.length === command.length) {
+  //     clearInterval(id)
+  //   }
+
+  //   return () => clearInterval(id)
+  // })
+  return (
+    <Main>
+      <InfoCard
+        p={2}
+        m="0 auto"
+        mt={[-120, -120, -240]}
+        borderRadius={2}
+        bg="white"
+        boxShadow="medium"
+      >
+        <AscpectRatioBox mb={2}>
+          <AspectRatioImage alt="Image of me" src={avatar} />
+        </AscpectRatioBox>
+        <Box>
+          <Text p={2} bg="black" color="white" fontFamily="mono" mb={2}>
+            $ {whoami} {finishedTyping && <br />}
+            {finishedTyping && (
+              <Text mt={2}>
+                Hi! Im Alex. I'm a web programmer, born in the Ural Mountains,
+                now living in the forests of Sweden. I like javascript, beer and
+                coffee.
+              </Text>
+            )}
+            <Cursor blinking={finishedTyping}>|</Cursor>
+          </Text>
+
+          <SocialLinks />
+        </Box>
+      </InfoCard>
+    </Main>
+  )
 }
