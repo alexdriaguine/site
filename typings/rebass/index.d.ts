@@ -1,25 +1,6 @@
 declare module 'rebass' {
-  // Type definitions for Rebass 0.4.0
-  // Project: https://github.com/jxnblk/rebass
-  // Definitions by: rhysd <https://rhysd.github.io>
-  //                 ryee-dev <https://github.com/ryee-dev>
-  //                 alexdriaguine <https://github.com/alexdriaguine>
-  // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-  // TypeScript Version: 2.8
-
-  // Type definitions for Rebass 3.0.0
-// Project: https://github.com/jxnblk/rebass
-// Definitions by: rhysd <https://rhysd.github.io>
-//                 ryee-dev <https://github.com/ryee-dev>
-//                 alexdriaguine <https://github.com/alexdriaguine>
-//                 eloiqs <https://github.com/eloiqs>
-//                 jamesmckenzie <https://github.com/jamesmckenzie>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
-
-import * as React from 'react'
-import {StyledComponentClass, ThemedOuterStyledProps} from 'styled-components'
-import {
+  import * as React from 'react'
+  import {
     WidthProps,
     FontSizeProps,
     SpaceProps,
@@ -37,130 +18,130 @@ import {
     BorderProps,
     BorderColorProps,
     BorderRadiusProps,
-    Variant,
     HeightProps,
     BoxShadowProps,
     BackgroundImageProps,
     BackgroundSizeProps,
     BackgroundRepeatProps,
     OpacityProps,
-} from 'styled-system'
+  } from 'styled-system'
+  import {StyledComponent} from 'styled-components'
 
-// Util type to remove properties from a type
-type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+  // Util type to remove properties from a type
+  type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 
-// Remove HTML attributes from types that are clashing with rebass own
-// responsive props
-type RebassHTMLAttributes<T> = Omit<React.HTMLAttributes<T>, 'color'>
-type RebassAnchorHTMLAttributes<T> = Omit<
+  // Remove HTML attributes from types that are clashing with rebass own
+  // responsive props
+  type RebassHTMLAttributes<T> = Omit<React.HTMLAttributes<T>, 'color'>
+  type RebassAnchorHTMLAttributes<T> = Omit<
     React.AnchorHTMLAttributes<T>,
     'color'
->
-type RebassImageHTMLAttributes<T> = Omit<
+  >
+  type RebassImageHTMLAttributes<T> = Omit<
     React.ImgHTMLAttributes<T>,
     'color' | 'height' | 'width'
->
+  >
 
-export interface BaseProps<C>
+  export interface BaseProps<C>
     extends React.ClassAttributes<C>,
-        SpaceProps,
-        TextColorProps,
-        BgColorProps,
-        WidthProps,
-        FontSizeProps {
+      SpaceProps,
+      TextColorProps,
+      BgColorProps,
+      WidthProps,
+      FontSizeProps {
     css?: Object
-}
+  }
 
-export interface BoxProps
+  export interface BoxProps
     extends BaseProps<BoxClass>,
-        WidthProps,
-        FontSizeProps,
-        RebassHTMLAttributes<HTMLDivElement> {}
-type BoxClass = React.StatelessComponent<ThemedOuterStyledProps<BoxProps, {}>>
-export const Box: BoxClass
+      WidthProps,
+      FontSizeProps,
+      RebassHTMLAttributes<HTMLDivElement> {}
+  type BoxClass = StyledComponent<React.ComponentClass<BoxProps>, any>
+  export const Box: BoxClass
 
-export interface ButtonProps
+  export interface ButtonProps
     extends BaseProps<ButtonClass>,
-        FontWeightProps,
-        BorderProps,
-        BorderColorProps,
-        BorderRadiusProps,
-        RebassHTMLAttributes<HTMLButtonElement> {
-    variant?: Variant
-}
-type ButtonClass = React.StatelessComponent<ThemedOuterStyledProps<ButtonProps, {}>>
-export const Button: ButtonClass
+      FontWeightProps,
+      BorderProps,
+      BorderColorProps,
+      BorderRadiusProps,
+      RebassHTMLAttributes<HTMLButtonElement> {
+    variant?: string
+  }
+  type ButtonClass = StyledComponent<React.ComponentClass<ButtonProps>, any>
+  export const Button: ButtonClass
 
-export interface CardProps
+  export interface CardProps
     extends BaseProps<CardClass>,
-        BorderProps,
-        BorderColorProps,
-        BorderRadiusProps,
-        BoxShadowProps,
-        BackgroundImageProps,
-        BackgroundSizeProps,
-        BackgroundRepeatProps,
-        OpacityProps,
-        FontWeightProps,
-        RebassHTMLAttributes<HTMLDivElement> {
-    variant?: Variant
-}
-type CardClass = React.StatelessComponent<ThemedOuterStyledProps<CardProps, {}>>
-export const Card: CardClass
+      BorderProps,
+      BorderColorProps,
+      BorderRadiusProps,
+      BoxShadowProps,
+      BackgroundImageProps,
+      BackgroundSizeProps,
+      BackgroundRepeatProps,
+      OpacityProps,
+      FontWeightProps,
+      RebassHTMLAttributes<HTMLDivElement> {
+    variant?: string
+  }
+  type CardClass = StyledComponent<React.ComponentClass<CardProps>, any>
+  export const Card: CardClass
 
-export interface FlexProps
+  export interface FlexProps
     extends BaseProps<FlexClass>,
-        AlignItemsProps,
-        JustifyContentProps,
-        FlexDirectionProps,
-        FlexWrapProps,
-        WidthProps,
-        RebassHTMLAttributes<HTMLDivElement> {}
-type FlexClass = React.StatelessComponent<ThemedOuterStyledProps<FlexProps, {}>>
-export const Flex: FlexClass
+      AlignItemsProps,
+      JustifyContentProps,
+      FlexDirectionProps,
+      FlexWrapProps,
+      WidthProps,
+      RebassHTMLAttributes<HTMLDivElement> {}
+  type FlexClass = StyledComponent<React.ComponentClass<FlexProps>, any>
+  export const Flex: FlexClass
 
-export interface HeadingProps
+  export interface HeadingProps
     extends BaseProps<HeadingClass>,
-        BaseTextProps,
-        RebassHTMLAttributes<HTMLHeadingElement> {}
-type HeadingClass = React.StatelessComponent<ThemedOuterStyledProps<HeadingProps, {}>>
-export const Heading: HeadingClass
+      BaseTextProps,
+      RebassHTMLAttributes<HTMLHeadingElement> {}
+  type HeadingClass = StyledComponent<React.ComponentClass<HeadingProps>, any>
+  export const Heading: HeadingClass
 
-export interface ImageProps
+  export interface ImageProps
     extends BaseProps<ImageClass>,
-        HeightProps,
-        BorderRadiusProps,
-        RebassImageHTMLAttributes<HTMLImageElement> {}
-type ImageClass = React.StatelessComponent<ThemedOuterStyledProps<ImageProps, {}>>
-export const Image: ImageClass
+      HeightProps,
+      BorderRadiusProps,
+      RebassImageHTMLAttributes<HTMLImageElement> {}
+  type ImageClass = StyledComponent<React.ComponentClass<ImageProps>, any>
+  export const Image: ImageClass
 
-export interface LinkProps
+  export interface LinkProps
     extends BaseProps<LinkClass>,
-        RebassAnchorHTMLAttributes<HTMLAnchorElement> {}
-type LinkClass = React.StatelessComponent<ThemedOuterStyledProps<LinkProps, {}>>
-export const Link: LinkClass
+      RebassAnchorHTMLAttributes<HTMLAnchorElement> {}
+  type LinkClass = StyledComponent<React.ComponentClass<LinkProps>, any>
+  export const Link: LinkClass
 
-export interface BaseTextProps
+  export interface BaseTextProps
     extends FontFamilyProps,
-        FontWeightProps,
-        TextAlignProps,
-        LineHeightProps,
-        LetterSpacingProps {}
-interface TextProps
+      FontWeightProps,
+      TextAlignProps,
+      LineHeightProps,
+      LetterSpacingProps {}
+  interface TextProps
     extends BaseProps<TextClass>,
-        BaseTextProps,
-        RebassHTMLAttributes<HTMLDivElement> {}
-type TextClass = React.StatelessComponent<ThemedOuterStyledProps<TextProps, {}>>
-export  const Text: TextClass
+      BaseTextProps,
+      RebassHTMLAttributes<HTMLDivElement> {}
+  type TextClass = StyledComponent<React.ComponentClass<TextProps>, any>
+  export const Text: TextClass
 
-export interface RebassComponentsModule<T> {
-    Box: React.StatelessComponent<ThemedOuterStyledProps<BoxProps, T>>
-    Button: React.StatelessComponent<ThemedOuterStyledProps<ButtonProps, T>>
-    Card: React.StatelessComponent<ThemedOuterStyledProps<CardProps, T>>
-    Flex: React.StatelessComponent<ThemedOuterStyledProps<FlexProps, T>>
-    Heading: React.StatelessComponent<ThemedOuterStyledProps<HeadingProps, T>>
-    Image: React.StatelessComponent<ThemedOuterStyledProps<ImageProps, T>>
-    Link: React.StatelessComponent<ThemedOuterStyledProps<LinkProps, T>>
-    Text: React.StatelessComponent<ThemedOuterStyledProps<TextProps, T>>
-}
+  export interface RebassComponentsModule<T extends object> {
+    Box: StyledComponent<React.ComponentClass<BoxProps>, T>
+    Button: StyledComponent<React.ComponentClass<ButtonProps>, T>
+    Card: StyledComponent<React.ComponentClass<CardProps>, T>
+    Flex: StyledComponent<React.ComponentClass<FlexProps>, T>
+    Heading: StyledComponent<React.ComponentClass<HeadingProps>, T>
+    Image: StyledComponent<React.ComponentClass<ImageProps>, T>
+    Link: StyledComponent<React.ComponentClass<LinkProps>, T>
+    Text: StyledComponent<React.ComponentClass<TextProps>, T>
+  }
 }
