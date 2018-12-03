@@ -1,9 +1,9 @@
 # Site
 
 Personal site
+https://alexdriaguine.netlify.com/
 
 ## Todo
 - Make pages folder be automatically routed by RR
-- Code split posts
 - Friendlier dev messages
 - Layouts folder
