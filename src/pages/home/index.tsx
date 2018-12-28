@@ -1,11 +1,8 @@
 import * as React from 'react'
-import styled, {keyframes, css} from 'styled-components'
-import {Title} from '../../components/typography'
-import {Avatar} from '../../components/style'
-import {Box, Image, Card, Heading, Text, Link, Flex} from 'rebass'
-import avatar from '../assets/avatar.jpg'
-import {useState, useEffect} from 'react'
+import styled from 'styled-components'
+import {Box, Card, Heading, Text} from 'rebass'
 import {SocialLinks} from './social-links'
+import { Theme } from '../../config/theme';
 
 interface MainProps {
   children?: React.ReactNode
@@ -23,19 +20,7 @@ const Main = (props: MainProps) => (
   <MainWrapper m="0 auto">{props.children}</MainWrapper>
 )
 
-const AscpectRatioBox = styled(Box)`
-  height: 0;
-  overflow: hidden;
-  padding-top: 100%; /* Just hardcoded for now, since image is a square */
-  background: white;
-  position: relative;
-`
 
-const AspectRatioImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-`
 
 const InfoCard = styled(Card)`
   display: grid;
@@ -45,14 +30,14 @@ const InfoCard = styled(Card)`
 `
 
 const Blue = styled.div`
-  background: #254e7b;
+  background: ${({theme}: {theme: Theme}) => theme.colors.lightblue};
   grid-column: 8 / span 5;
   grid-row: 1 / span 4;
   z-index: 1;
 `
 
 const BabyBlue = styled.div`
-  background: #5584b1;
+  background: ${({theme}: {theme: Theme}) => theme.colors.babyblue};
   grid-row: 1 / span 3;
   grid-column: 1 / span 11;
   clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
@@ -60,7 +45,7 @@ const BabyBlue = styled.div`
 `
 
 const Beige = styled.div`
-  background: #f8f3ea;
+  background: ${({theme}: {theme: Theme}) => theme.colors.beige};
   grid-row: 1 / span 4;
   grid-column: 1 / span 12;
 `
@@ -107,7 +92,6 @@ const CardFront = () => (
 )
 
 export const Home = () => {
-  const command = 'whoami'
   return (
     <Main>
       <CardFront />

@@ -7,6 +7,7 @@
     "jsx": "react",
     "lib": ["es2015", "dom"],
     "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
     "typeRoots": ["node_modules/@types", "typings"]
   }
 }

@@ -1,13 +1,11 @@
 import * as React from 'react'
 import {Route, Switch} from 'react-router'
-import {Link, NavLink} from 'react-router-dom'
-import styled, {keyframes} from 'styled-components'
-import avatar from '../assets/avatar.jpg'
+import styled from 'styled-components'
 import {Home} from './pages/home'
-import {Flex, Box, Card, Heading} from 'rebass'
+import {Flex} from 'rebass'
 import {createGlobalStyle} from 'styled-components'
-import background from './assets/background.jpg'
 import {ThemeProvider} from 'styled-components'
+import { theme } from './config/theme';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -35,22 +33,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 `
-const theme = {
-  colors: {
-    blue: '#07c',
-    lightblue: '#90caf9',
-    lightgray: '#f6f6ff',
-  },
-  fonts: {
-    sans: 'system-ui, sans-serif',
-    mono: 'Menlo, monospace',
-  },
-  shadows: {
-    small: '0 0 4px rgba(0, 0, 0, .125)',
-    large: '0 0 24px rgba(0, 0, 0, .125)',
-    medium: '0 2px 16px rgba(0, 0, 0, 0.25)',
-  },
-}
+
 
 const AppShell = styled(Flex)`
   height: 100vh;
