@@ -4,7 +4,6 @@ import {Link, NavLink} from 'react-router-dom'
 import styled, {keyframes} from 'styled-components'
 import avatar from '../assets/avatar.jpg'
 import {Home} from './pages/home'
-import {Projects} from './pages/projects'
 import {Flex, Box, Card, Heading} from 'rebass'
 import {createGlobalStyle} from 'styled-components'
 import background from './assets/background.jpg'
@@ -53,37 +52,6 @@ const theme = {
   },
 }
 
-const Header = styled.header`
-  height: 60px;
-  position: relative;
-  display: flex;
-  align-items: center;
-`
-
-interface LogoProps {
-  animate?: boolean
-}
-const Logo = styled(Flex)`
-  height: 48px;
-`
-
-const Menu = styled(Flex)`
-  background: black;
-  color: white;
-`
-
-const MenuLink = styled(NavLink)`
-  &,
-  &:visited {
-    color: white;
-  }
-  padding: 0.5rem;
-
-  &.active {
-    background: teal;
-  }
-`
-
 const AppShell = styled(Flex)`
   height: 100vh;
 `
@@ -92,36 +60,13 @@ AppShell.defaultProps = {
   flexDirection: 'column',
 }
 
-const HeaderCard = styled(Card)`
-  height: 200px;
-
-  @media screen and (min-width: 52em) {
-    height: 50vh;
-  }
-  display: flex;
-  justify-content: center;
-`
-
 export const App = () => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
       <GlobalStyle />
       <AppShell>
-        <header>
-          <HeaderCard backgroundSize="cover" color="white" bg="#546e7a">
-            <Heading
-              mt={[20, 20, 80]}
-              fontFamily="sans"
-              textAlign="center"
-              fontSize={[4, 5,  6]}
-            >
-              alex driaguine
-            </Heading>
-          </HeaderCard>
-        </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/projects" exact component={Projects} />
         </Switch>
       </AppShell>
     </React.Fragment>
